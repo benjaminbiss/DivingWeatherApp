@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'locations.apps.LocationsConfig',
     'reviews.apps.ReviewsConfig',
     'replies.apps.RepliesConfig',
+    'trips.apps.TripsConfig',
     'corsheaders',
 ]
 
