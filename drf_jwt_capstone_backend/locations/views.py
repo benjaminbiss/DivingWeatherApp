@@ -1,7 +1,4 @@
-from django.shortcuts import render
 from rest_framework import status
-from rest_framework import serializers
-from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Locations
