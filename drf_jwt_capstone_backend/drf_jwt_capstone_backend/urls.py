@@ -15,20 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from locations.views import LocationList, LocationDetail
-from replies.views import RepliesList, ReplyDetail
-from reviews.views import ReviewsList, ReviewDetail
-from trips.views import TripsList, TripDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
-    path('locations/', LocationList.as_view(), name='locations'),
-    path('locations/<int:pk>/', LocationDetail.as_view(), name='location_detail'),
-    path('replies/', RepliesList.as_view(), name='replies'),
-    path('replies/<int:pk>/', ReplyDetail.as_view(), name='reply_detail'),
-    path('reviews/', ReviewsList.as_view(), name='reviews'),
-    path('reviews/<int:pk>/', ReviewDetail.as_view(), name='review_detail'),
-    path('trips/', TripsList.as_view(), name='trips'),
-    path('trips/<int:pk>/', TripDetail.as_view(), name='trip_detail'),
+    path('locations/', include('location.urls')),
+    path('replies/', include('replies.urls')),
+    path('reviews/', include('reviews.urls')),
+    path('trips/', include('trips.urls')),
 ]
