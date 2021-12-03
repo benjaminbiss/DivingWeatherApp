@@ -1,8 +1,9 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
+diver = get_user_model()
 # Create your models here.
 class Trips(models.Model):
-    diver_pk = models.IntegerField(null=True, blank=True)
+    diver_pk = models.ForeignKey(diver, null=True, blank=True, on_delete=models.CASCADE)
     location_pk = models.IntegerField(null=True, blank=True)
     date = models.DateField(max_length=1)
     trip_name = models.CharField(max_length=250)
