@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Replies
 from .serializers import RepliesSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class RepliesList(APIView):
@@ -20,6 +21,7 @@ class RepliesList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ReplyDetail(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get_object(self, pk):
         try:

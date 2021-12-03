@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from rest_framework import status
-from rest_framework import serializers
-from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Reviews
 from .serializers import ReviewsSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class ReviewsList(APIView):
@@ -23,6 +21,7 @@ class ReviewsList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ReviewDetail(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get_object(self, pk):
         try:

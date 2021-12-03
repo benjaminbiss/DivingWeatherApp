@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Locations
 from .serializers import LocationSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class LocationList(APIView):
@@ -20,7 +21,8 @@ class LocationList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LocationDetail(APIView):
-
+    permission_classes = [IsAuthenticated]
+    
     def get_object(self, pk):
         try:
             return Locations.objects.get(pk=pk)
