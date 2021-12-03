@@ -8,7 +8,7 @@ from .models import Replies
 from .serializers import RepliesSerializer
 
 # Create your views here.
-class LocationList(APIView):
+class RepliesList(APIView):
 
     def get(self, request):
         replies = Replies.objects.all()
@@ -22,7 +22,7 @@ class LocationList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class LocationDetail(APIView):
+class ReplyDetail(APIView):
 
     def get_object(self, pk):
         try:
