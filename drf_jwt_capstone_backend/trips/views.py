@@ -7,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class TripsList(APIView):
-    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         trips = Trips.objects.all()
